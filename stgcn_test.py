@@ -58,11 +58,7 @@ def inference(model, test_loader):
             xs = data
             # CPU환경을 가정하므로 cuda에 올리는 건 제외했습니다.. 나중에 여차하면 device설정으로 올려버리기!
             output = model(xs)
-            # print("model(xs) : ",type(output), output.size()) # 4, 2000 ... 흠... 다시 생각해보기
-            # print(output)
             output = torch.mean(output, dim=0)
-            # print("mean(output) : ", type(output), output.size())
-            # print(output)
             y_pred = output.max(0, keepdim=True)
 
     print(f"🤖 My Prediction: {y_pred[1]} 🤖")
